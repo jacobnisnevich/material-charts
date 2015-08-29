@@ -11,14 +11,14 @@ $(document).ready(function() {
 			],
 			"color": "blue"
 		},
-		"title": "Example Box Chart",
+		"title": "Example Bar Chart",
 		"height": "300px",
 		"width": "500px",
 		"background": "#FFFFFF",
 		"shadowDepth": "1"
 	};
 
-	MaterialCharts.bar("#box-chart-example", exampleBarChartData)
+	MaterialCharts.bar("#bar-chart-example", exampleBarChartData)
 
 	var examplePieChartData = {
 		"datasets": {
