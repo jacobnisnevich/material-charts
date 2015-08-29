@@ -1,0 +1,132 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #64b5f6;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+}
+
+.container {
+    background-color: #e3f2fd;
+    width: 60%;
+    margin: 0 auto;
+    box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.header {
+    background-color: #1976d2;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.footer {
+    background-color: #1976d2;
+    color: #f5f5f5;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.copyright {
+    position: absolute;
+    font-weight: 100;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    left: 20px;
+    height: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.github-link {
+    float: right;
+}
+
+.github-link img {
+    height: 44px;
+
+    -webkit-transition: all 0.3s ease; /* Safari and Chrome */
+    -moz-transition: all 0.3s ease; /* Firefox */
+    -ms-transition: all 0.3s ease; /* IE 9 */
+    -o-transition: all 0.3s ease; /* Opera */
+    transition: all 0.3s ease;
+}
+
+.github-link img:hover {
+    -webkit-filter: brightness(70%);
+    -moz-filter: brightness(70%);
+    -ms-filter: brightness(70%);
+    -o-filter: brightness(70%);
+    filter: brightness(70%);
+
+    -webkit-transition: all 0.3s ease; /* Safari and Chrome */
+    -moz-transition: all 0.3s ease; /* Firefox */
+    -ms-transition: all 0.3s ease; /* IE 9 */
+    -o-transition: all 0.3s ease; /* Opera */
+    transition: all 0.3s ease;
+
+    cursor: pointer;
+}
+
+.title {
+    font-size: 48px;
+    color: #f5f5f5;
+}
+
+section {
+    padding: 20px 20px 0 20px;
+}
+
+.section-title {
+    font-size: 28px;
+}
+
+pre {
+    background-color: #FAFAFB;
+    display: inline-block;
+    padding: 10px;
+    margin-left: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.subsection {
+    margin: 10px 0;
+}
+
+.subsection-title {
+    font-size: 18px;
+}
+
+.example-code, .example-chart {
+    width: 47%;
+    float: left;
+    margin: 15px;
+}
+
+.example-code pre {
+    width: 500px;
+    height: 300px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
