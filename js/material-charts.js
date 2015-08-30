@@ -76,9 +76,9 @@ function insertHorizontalLabel( element, horizontalPos, label ) {
 }
 
 function insertVerticalBar( element, horizontalPos, horizontalSpread, height, value, color ) {
-	$(element).append("<div class='box-chart-vertical-bar " + color + "' style='left: " + 
+	$("<div class='box-chart-vertical-bar " + color + "' style='left: " + 
 		(horizontalPos - horizontalSpread / 4) + "px; width: " + (horizontalSpread / 2) + 
-		"px; height: " + height + "px'></div>");
+		"px; height: " + height + "px'></div>").appendTo($(element)).hide().slideDown();
 }
 
 function alignLabels( element ) {

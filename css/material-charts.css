@@ -1,5 +1,6 @@
 .chart-area {
 	position: relative;
+	color: #666666;
 }
 
 /* Shadow Styles */
@@ -63,7 +64,7 @@
 /* Axes */
 
 .box-chart-y-axis {
-	background-color: #111111;
+	background-color: #777777;
 	position: absolute;
 	width: 1px;
 	top: 35px;
@@ -72,7 +73,7 @@
 }
 
 .box-chart-x-axis {
-	background-color: #111111;
+	background-color: #777777;
 	position: absolute;
 	height: 1px;
 	right: 25px;
@@ -81,7 +82,7 @@
 }
 
 .box-chart-vertical-tick {
-	background-color: #111111;
+	background-color: #777777;
 	position: absolute;
 	height: 1px;
 	left: 20px;
