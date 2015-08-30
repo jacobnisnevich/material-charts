@@ -1,59 +1,59 @@
-.chart-area {
+.material-charts-chart-area {
 	position: relative;
 	color: #666666;
 }
 
 /* Shadow Styles */
 
-.shadow-1 {
+.material-charts-shadow-1 {
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-.shadow-2 {
+.material-charts-shadow-2 {
 	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.shadow-3 {
+.material-charts-shadow-3 {
 	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
-.shadow-4 {
+.material-charts-shadow-4 {
 	box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
 }
 
-.shadow-5 {
+.material-charts-shadow-5 {
 	box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
 }
 
 /* Colors */
 
-.blue {
+.material-charts-blue {
 	background-color: #1976d2;
 }
 
-.red {
+.material-charts-red {
 	background-color: #d32f2f;
 }
 
-.green {
+.material-charts-green {
 	background-color: #388e3c;
 }
 
-.yellow {
+.material-charts-yellow {
 	background-color: #fbc02d;
 }
 
-.grey {
+.material-charts-grey {
 	background-color: #616161;
 }
 
-.black {
+.material-charts-black {
 	background-color: #000000;
 }
 
 /* Chart Text */
 
-.chart-title {
+.material-charts-chart-title {
 	position: absolute;
 	top: 5px;
 	left: 0;
@@ -61,9 +61,20 @@
     text-align: center;
 }
 
+.material-charts-error-message {
+	position: absolute; 
+	margin: auto; 
+	top: 0; 
+	left: 0; 
+	right: 0; 
+	bottom: 0; 
+	height: 18px; 
+	width: 200px
+}
+
 /* Axes */
 
-.box-chart-y-axis {
+.material-charts-box-chart-y-axis {
 	background-color: #777777;
 	position: absolute;
 	width: 1px;
@@ -72,7 +83,7 @@
 	bottom: 25px;
 }
 
-.box-chart-x-axis {
+.material-charts-box-chart-x-axis {
 	background-color: #777777;
 	position: absolute;
 	height: 1px;
@@ -81,7 +92,7 @@
 	bottom: 25px;
 }
 
-.box-chart-vertical-tick {
+.material-charts-box-chart-vertical-tick {
 	background-color: #777777;
 	position: absolute;
 	height: 1px;
@@ -89,26 +100,26 @@
 	width: 10px;
 }
 
-.box-chart-vertical-tick-label {
+.material-charts-box-chart-vertical-tick-label {
 	position: absolute;
 	left: 5px;
 	font-size: 8px;
 }
 
-.box-chart-horizontal-label {
+.material-charts-box-chart-horizontal-label {
 	position: absolute;
 	bottom: 5px;
 	font-size: 12px;
 }
 
-.box-chart-vertical-bar {
+.material-charts-box-chart-vertical-bar {
 	position: absolute;
 	bottom: 25px;
 	box-shadow: 2px -2px 15px 0 rgba(0, 0, 0, 0.16), 2px -2px 15px 0 rgba(0, 0, 0, 0.12);
 	border-radius: 3px 3px 0 0;
 }
 
-.box-chart-vertical-bar:hover {
+.material-charts-box-chart-vertical-bar:hover {
 	position: absolute;
 	bottom: 25px;
 	box-shadow: 2px -5px 30px 0 rgba(0, 0, 0, 0.24), 2px -5px 30px 0 rgba(0, 0, 0, 0.19);
