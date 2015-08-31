@@ -21,7 +21,7 @@ $(document).ready(function() {
 	MaterialCharts.bar("#bar-chart-example", exampleBarChartData)
 
 	var examplePieChartData = {
-		"datasets": {
+		"dataset": {
 			"values": [5, 30, 5, 20, 40],
 			"labels": [
 				"Apples", 

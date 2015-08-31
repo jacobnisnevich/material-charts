@@ -67,8 +67,8 @@
 	position: absolute;
 	top: 5px;
 	left: 0;
-    right: 0;
-    text-align: center;
+	right: 0;
+	text-align: center;
 }
 
 .material-charts-error-message {
@@ -135,39 +135,68 @@
 	box-shadow: 2px -5px 30px 0 rgba(0, 0, 0, 0.24), 2px -5px 30px 0 rgba(0, 0, 0, 0.19);
 	border-radius: 3px 3px 0 0;
 
-    -webkit-transition: all 0.2s ease; /* Safari and Chrome */
-    -moz-transition: all 0.2s ease; /* Firefox */
-    -ms-transition: all 0.2s ease; /* IE 9 */
-    -o-transition: all 0.2s ease; /* Opera */
-    transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease; /* Safari and Chrome */
+	-moz-transition: all 0.2s ease; /* Firefox */
+	-ms-transition: all 0.2s ease; /* IE 9 */
+	-o-transition: all 0.2s ease; /* Opera */
+	transition: all 0.2s ease;
 
-    cursor: pointer;
+	cursor: pointer;
 }
 
 /* Pie Chart Components */
 
-.material-charts-pie-sector {
-    height: 100px;
-    width: 200px;
-    overflow: hidden;
-    position: relative;
+.material-charts-pie-chart {
+	background-color: #80cbc4;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
 }
 
-.material-charts-pie-sector:before {
-    height: inherit;
-    width: inherit;
-    position: absolute;
-    content: "";
-    border-radius: 100px 100px 0 0;
-    background-color: crimson;
+.material-charts-pie-sector {
+	height: inherit;
+	width: inherit;
+	border-radius: inherit;
+}
 
-    -webkit-transform-origin: 50% 100%;
-    -moz-transform-origin: 50% 100%;
-    -ms-transform-origin: 50% 100%;
-    transform-origin: 50% 100%;
+.material-charts-pie-sector-container-left {
+	position: absolute;
+	height: inherit;
+	width: inherit;
+	border-radius: inherit;
+	overflow: hidden;
 
-    -webkit-transform: rotate(140deg);
-    -moz-transform: rotate(140deg);
-    -ms-transform: rotate(140deg);
-    transform: rotate(140deg);
+	-webkit-clip-path: inset(0% 0% 0% 50%);
+	-moz-clip-path: inset(0% 0% 0% 50%);
+	-ms-clip-path: inset(0% 0% 0% 50%);
+	-o-clip-path: inset(0% 0% 0% 50%);
+	clip-path: inset(0% 0% 0% 50%);
+	-webkit-backface-visibility: hidden;
+}
+
+.material-charts-pie-sector-container-right {
+	position: absolute;
+	height: inherit;
+	width: inherit;
+	border-radius: inherit;
+	overflow: hidden;
+
+	-webkit-clip-path: inset(0% 50% 0% 0%);
+	-moz-clip-path: inset(0% 50% 0% 0%);
+	-ms-clip-path: inset(0% 50% 0% 0%);
+	-o-clip-path: inset(0% 50% 0% 0%);
+	clip-path: inset(0% 50% 0% 0%);
+	-webkit-backface-visibility: hidden;
+}
+
+.material-charts-pie-sector-container-middle {
+	position: absolute;
+	height: inherit;
+	width: inherit;
+	border-radius: inherit;
+	overflow: hidden;
 }
