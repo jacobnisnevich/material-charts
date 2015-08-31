@@ -5,8 +5,11 @@ var MaterialCharts = {}
 // Bar Charts
 
 MaterialCharts.bar = function( element, data ) {
-	initializeChartArea( element, data.height, data.width, data.background, data.shadowDepth );
+	initializeChartArea( element, data.height, data.width, data.background, data.shadowDepth, "bar" );
+	var hovered = false;
+	
 	var validateResult = validateBarChartData( data );
+
 	if (validateResult.valid) {	
 		insertTitle( element, data.title );
 		insertAxes( element );
@@ -15,6 +18,23 @@ MaterialCharts.bar = function( element, data ) {
 	} else {
 		insertErrorMessage( element, validateResult.message );
 	}
+
+	var loop = window.setInterval(function () {
+		if (hovered) {
+			$(document).on("mousemove", function(event){
+				$(element + " .material-charts-hover").css({top: event.clientY - 40, left: event.clientX + 15});
+			});
+		}
+	}, 250);
+
+	$(".material-charts-bar .material-charts-box-chart-vertical-bar").hover(function() {
+		$(element + " .material-charts-hover-text").text($(this).data("hover"));
+		$(element + " .material-charts-hover").css({top: event.clientY - 40, left: event.clientX + 15}).show();
+		hovered = true;
+	}, function() {
+		$(element + " .material-charts-hover").hide();
+		hovered = false;
+	});
 }
 
 // Pie Charts
@@ -27,8 +47,12 @@ MaterialCharts.pie = function( element, data ) {
 
 //// Helper functions
 
-function initializeChartArea( element, height, width, background, shadowDepth ) {
+function initializeChartArea( element, height, width, background, shadowDepth, type ) {
 	$(element).addClass("material-charts-chart-area");
+	$(element).addClass("material-charts-" + type);
+
+	$(element).append("<div class='material-charts-hover'><div class='material-charts-hover-text'></div></div>")
+
 	$(element).css("height", height);
 	$(element).css("width", width);
 
@@ -93,7 +117,7 @@ function insertHorizontalLabel( element, horizontalPos, label ) {
 }
 
 function insertVerticalBar( element, horizontalPos, horizontalSpread, height, value, color ) {
-	$("<div class='material-charts-box-chart-vertical-bar material-charts-" + color + "' style='left: " + 
+	$("<div data-hover='" + value + "' class='material-charts-box-chart-vertical-bar material-charts-" + color + "' style='left: " + 
 		(horizontalPos - horizontalSpread / 4) + "px; width: " + (horizontalSpread / 2) + 
 		"px; height: " + height + "px'></div>").appendTo($(element)).hide().slideDown();
 }

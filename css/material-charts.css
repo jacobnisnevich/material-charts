@@ -3,6 +3,16 @@
 	color: #666666;
 }
 
+.material-charts-hover {
+	position: fixed;
+	display: none;
+	background-color: #FFFFFF;
+	padding: 10px;
+	border-radius: 3px;
+	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+	z-index: 10;
+}
+
 /* Shadow Styles */
 
 .material-charts-shadow-1 {
@@ -132,4 +142,32 @@
     transition: all 0.2s ease;
 
     cursor: pointer;
+}
+
+/* Pie Chart Components */
+
+.material-charts-pie-sector {
+    height: 100px;
+    width: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.material-charts-pie-sector:before {
+    height: inherit;
+    width: inherit;
+    position: absolute;
+    content: "";
+    border-radius: 100px 100px 0 0;
+    background-color: crimson;
+
+    -webkit-transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+
+    -webkit-transform: rotate(140deg);
+    -moz-transform: rotate(140deg);
+    -ms-transform: rotate(140deg);
+    transform: rotate(140deg);
 }
