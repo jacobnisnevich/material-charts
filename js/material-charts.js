@@ -182,62 +182,81 @@ MaterialCharts.helpers.pie = {
 
 		return angles;
 	},
+	degreesToRadians: function( degrees ) {
+		return degrees * Math.PI / 180;
+	},
+	degreesToClipPath: function( degrees ) {
+		var points = [];
+		var x;
+		
+		if ( degrees <= 45 ) {
+			points.push("50% 50%");
+			points.push("50% 0%");
+			x = 50 + Math.tan(this.degreesToRadians(degrees)) * 50;
+			points.push(x.toString() + "% 0%");
+		} else if ( degrees > 45 && degrees <= 135 ) {
+			points.push("50% 50%");
+			points.push("50% 0%");
+			points.push("100% 0%");
+			x = 100 - (50 + Math.tan(this.degreesToRadians(90 - degrees)) * 50);
+			points.push("100% " + x.toString() + "%");
+		} else if ( degrees > 135 && degrees <= 225 ) {
+			points.push("50% 50%");
+			points.push("50% 0%");
+			points.push("100% 0%");
+			points.push("100% 100%");
+			x = 50 + Math.tan(this.degreesToRadians(180 - degrees)) * 50;
+			points.push(x.toString() + "%" + " 100%");
+		} else if ( degrees > 225 && degrees <= 315 ) {
+			points.push("50% 50%");
+			points.push("50% 0%");
+			points.push("100% 0%");
+			points.push("100% 100%");
+			points.push("0% 100%");
+			x = 50 + Math.tan(this.degreesToRadians(270 - degrees)) * 50;
+			points.push("0% " + x.toString() + "%");
+		} else if ( degrees > 315 && degrees <= 360 ) {
+			points.push("50% 50%");
+			points.push("50% 0%");
+			points.push("100% 0%");
+			points.push("100% 100%");
+			points.push("0% 100%");
+			points.push("0% 0%");
+			x = 100 - (50 + Math.tan(this.degreesToRadians(360 - degrees)) * 50);
+			points.push(x.toString() + "%" + " 0%");
+		}
+		
+		return points;
+	},
 	drawPieSections: function( element, labels, percentages, angles ) {
 		var index;
-		var containerIndex = 0;
-		var anglesTotal = 0;
-		var secondOffset = -90;
+		var offset = 0;
 
 		var colors = [
 			"#1976d2",
 			"#d32f2f",
 			"#388e3c",
 			"#ffeb3b",
-			"#80cbc4"
+			"#80cbc4",
+			"#8e24aa"
 		];
 
-		for (index = 0; index < labels.length - 1; index++) {
-			if (anglesTotal < 180 && (anglesTotal + angles[index] > 180)) {
-				var firstAngle = 180 - anglesTotal;
-				var secondAngle = angles[index] - firstAngle;
-				this.drawPieSection( element, labels[index], percentages[index], firstAngle, secondOffset, colors[(index - 1 % 4)], containerIndex, "middle" );
-				containerIndex++;
-				this.drawPieSection( element, labels[index], percentages[index], secondAngle, secondOffset + firstAngle, colors[(index % 4)], containerIndex, "right" );
-			} else {
-				if (anglesTotal < 180) {
-					this.drawPieSection( element, labels[index], percentages[index], angles[index], secondOffset, colors[(index % 4)], containerIndex, "left" );
-				} else {
-					this.drawPieSection( element, labels[index], percentages[index], angles[index], secondOffset, colors[(index % 4)], containerIndex, "right" );
-				}
-			}
-			anglesTotal += angles[index];
-			secondOffset += angles[index];
-			containerIndex++;
+		for (index = 0; index < labels.length; index++) {
+			this.makePieSector( angles[index], offset, labels[index], colors[index % 6]);
+			offset += angles[index];
 		}
 	},
-	drawPieSection: function( element, label, percentage, angle, secondOffset, color, index, side ) {
-		var backgroundString = "";
-
-		if (side == "left") {
-			$("<div class='material-charts-pie-sector-container-left material-charts-pie-sector-container-" + index + "'></div>").appendTo($(element + " .material-charts-pie-chart"));
-		} else if (side == "right") {
-			$("<div class='material-charts-pie-sector-container-right material-charts-pie-sector-container-" + index + "'></div>").appendTo($(element + " .material-charts-pie-chart"));
-		} else {
-			$("<div class='material-charts-pie-sector-container-middle material-charts-pie-sector-container-" + index + "'></div>").appendTo($(element + " .material-charts-pie-chart"));
-		}
-
-		if ((angle + secondOffset + 90) > 180) {
-			backgroundString = "linear-gradient(90deg, transparent 50%, " + color + " 50%), linear-gradient(" + (angle + secondOffset) + "deg, " + color + " 50%, transparent 50%)";
-		} else {
-			backgroundString = "linear-gradient(270deg, transparent 50%, " + color + " 50%), linear-gradient(" + (angle + secondOffset) + "deg, " + color + " 50%, transparent 50%)";
-		}
-
+	makePieSector: function( degrees, offset, label, color ) {
+		var points = this.degreesToClipPath( degrees );
+		
 		$("<div class='material-charts-pie-sector'></div>")
-			.appendTo($(element + " .material-charts-pie-sector-container-" + index))
+			.appendTo(".material-charts-pie-chart")
 			.css({
-				"background-image": backgroundString,
-				"z-index": index
-			}).attr("data-hover", label + ", " + (percentage * 100) + "%")
+				"-webkit-clip-path": "polygon(" + points.join(", ").toString() + ")",
+				"-webkit-transform": "rotate(" + offset.toString() + "deg)",
+				"background-color": color
+			})
+			.attr("data-hover", label + ", " + (degrees / 360 * 100).toFixed(2).toString() + "%");
 	}
 };
 

@@ -147,7 +147,6 @@
 /* Pie Chart Components */
 
 .material-charts-pie-chart {
-	background-color: #80cbc4;
 	border-radius: 50%;
 	position: absolute;
 	top: 0;
@@ -158,45 +157,8 @@
 }
 
 .material-charts-pie-sector {
-	height: inherit;
-	width: inherit;
-	border-radius: inherit;
-}
-
-.material-charts-pie-sector-container-left {
 	position: absolute;
 	height: inherit;
 	width: inherit;
 	border-radius: inherit;
-	overflow: hidden;
-
-	-webkit-clip-path: inset(0% 0% 0% 50%);
-	-moz-clip-path: inset(0% 0% 0% 50%);
-	-ms-clip-path: inset(0% 0% 0% 50%);
-	-o-clip-path: inset(0% 0% 0% 50%);
-	clip-path: inset(0% 0% 0% 50%);
-	-webkit-backface-visibility: hidden;
-}
-
-.material-charts-pie-sector-container-right {
-	position: absolute;
-	height: inherit;
-	width: inherit;
-	border-radius: inherit;
-	overflow: hidden;
-
-	-webkit-clip-path: inset(0% 50% 0% 0%);
-	-moz-clip-path: inset(0% 50% 0% 0%);
-	-ms-clip-path: inset(0% 50% 0% 0%);
-	-o-clip-path: inset(0% 50% 0% 0%);
-	clip-path: inset(0% 50% 0% 0%);
-	-webkit-backface-visibility: hidden;
-}
-
-.material-charts-pie-sector-container-middle {
-	position: absolute;
-	height: inherit;
-	width: inherit;
-	border-radius: inherit;
-	overflow: hidden;
 }
