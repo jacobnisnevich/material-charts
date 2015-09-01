@@ -127,13 +127,16 @@
 	bottom: 25px;
 	box-shadow: 2px -2px 15px 0 rgba(0, 0, 0, 0.16), 2px -2px 15px 0 rgba(0, 0, 0, 0.12);
 	border-radius: 3px 3px 0 0;
+
+	-webkit-transition: all 0.2s ease; /* Safari and Chrome */
+	-moz-transition: all 0.2s ease; /* Firefox */
+	-ms-transition: all 0.2s ease; /* IE 9 */
+	-o-transition: all 0.2s ease; /* Opera */
+	transition: all 0.2s ease;
 }
 
 .material-charts-box-chart-vertical-bar:hover {
-	position: absolute;
-	bottom: 25px;
 	box-shadow: 2px -5px 30px 0 rgba(0, 0, 0, 0.24), 2px -5px 30px 0 rgba(0, 0, 0, 0.19);
-	border-radius: 3px 3px 0 0;
 
 	-webkit-transition: all 0.2s ease; /* Safari and Chrome */
 	-moz-transition: all 0.2s ease; /* Firefox */
@@ -161,4 +164,22 @@
 	height: inherit;
 	width: inherit;
 	border-radius: inherit;
+
+	-webkit-transition: all 0.2s ease; /* Safari and Chrome */
+	-moz-transition: all 0.2s ease; /* Firefox */
+	-ms-transition: all 0.2s ease; /* IE 9 */
+	-o-transition: all 0.2s ease; /* Opera */
+	transition: all 0.2s ease;
+}
+
+.material-charts-pie-sector:hover {
+	box-shadow: 2px -2px 15px 0 rgba(0, 0, 0, 0.16), 2px -2px 15px 0 rgba(0, 0, 0, 0.12);
+
+	-webkit-transition: all 0.2s ease; /* Safari and Chrome */
+	-moz-transition: all 0.2s ease; /* Firefox */
+	-ms-transition: all 0.2s ease; /* IE 9 */
+	-o-transition: all 0.2s ease; /* Opera */
+	transition: all 0.2s ease;
+
+	cursor: pointer;
 }
