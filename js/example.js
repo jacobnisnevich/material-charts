@@ -12,6 +12,7 @@ $(document).ready(function() {
 			"color": "blue"
 		},
 		"title": "Example Bar Chart",
+		"noY": true,
 		"height": "300px",
 		"width": "500px",
 		"background": "#FFFFFF",

@@ -13,9 +13,11 @@ MaterialCharts.bar = function( element, data ) {
 	var validateResult = MaterialCharts.validators.validateBarChartData( data );
 
 	if (validateResult.valid) {	
-		MaterialCharts.helpers.insertTitle( element, data.title );
-		MaterialCharts.helpers.bar.insertAxes( element );
-		MaterialCharts.helpers.bar.insertData( element, parseInt(data.height), parseInt(data.width), data.datasets.values, Math.max.apply(null, data.datasets.values), data.datasets.labels, data.datasets.color );
+		if (data.title) {
+			MaterialCharts.helpers.insertTitle( element, data.title );
+		}
+		MaterialCharts.helpers.bar.insertAxes( element, data.noY );
+		MaterialCharts.helpers.bar.insertData( element, parseInt(data.height), parseInt(data.width), data.datasets.values, Math.max.apply(null, data.datasets.values), data.datasets.labels, data.datasets.color, data.noY );
 		MaterialCharts.helpers.bar.alignLabels( element );
 	} else {
 		MaterialCharts.helpers.insertErrorMessage( element, validateResult.message );
@@ -106,11 +108,13 @@ MaterialCharts.helpers = {
 };
 
 MaterialCharts.helpers.bar = {
-	insertAxes: function( element ) {
+	insertAxes: function( element, noY ) {
 		$(element).append("<div class='material-charts-box-chart-x-axis'></div>");
-		$(element).append("<div class='material-charts-box-chart-y-axis'></div>");
+		if (!noY) {
+			$(element).append("<div class='material-charts-box-chart-y-axis'></div>");
+		}
 	},
-	insertData: function( element, height, width, dataElements, dataMax, dataLabels, color ) {
+	insertData: function( element, height, width, dataElements, dataMax, dataLabels, color, noY ) {
 		var tickMax = dataMax;
 
 		while (tickMax % 5 !== 0) {
@@ -122,10 +126,12 @@ MaterialCharts.helpers.bar = {
 		var startTickPosition = 25;
 		var endTickPosition = (25 + tickMax) * absoluteHeightMultipler - (25)  * absoluteHeightMultipler;
 
-		for (var i = startTickPosition + verticalSpread; i <= endTickPosition; i += verticalSpread) {
-			this.insertVerticalTick( element, i, (i - 25) / absoluteHeightMultipler);
+		if (!noY) {
+			for (var i = startTickPosition + verticalSpread; i <= endTickPosition; i += verticalSpread) {
+				this.insertVerticalTick( element, i, (i - 25) / absoluteHeightMultipler);
+			}
 		}
-
+		
 		var horizontalSpread = (width - 50) / (dataLabels.length + 1);
 
 		var j, barCount;
@@ -291,12 +297,6 @@ MaterialCharts.validators = {
 		if (data.datasets.color === null) {
 			validateResult.valid = false;
 			validateResult.message = "Material Charts Error: Dataset color must be specified.";
-			return validateResult;
-		}
-
-		if (data.title === null) {
-			validateResult.valid = false;
-			validateResult.message = "Material Charts Error: Chart data must have a title.";
 			return validateResult;
 		}
 
