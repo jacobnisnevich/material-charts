@@ -18,7 +18,6 @@ MaterialCharts.bar = function( element, data ) {
 		}
 		MaterialCharts.helpers.bar.insertAxes( element, data.noY );
 		MaterialCharts.helpers.bar.insertData( element, parseInt(data.height), parseInt(data.width), data.datasets.values, Math.max.apply(null, data.datasets.values), data.datasets.labels, data.datasets.color, data.noY );
-		MaterialCharts.helpers.bar.alignLabels( element );
 	} else {
 		MaterialCharts.helpers.insertErrorMessage( element, validateResult.message );
 	}
@@ -104,6 +103,14 @@ MaterialCharts.helpers = {
 	},
 	insertErrorMessage: function( element, message ) {
 		$(element).append("<div class='material-charts-error-message'><b>" + message + "</b></div>");
+	},
+	elementRealWidth: function( obj ) {
+	    var clone = obj.clone();
+	    clone.css("visibility", "hidden");
+	    $('body').append(clone);
+	    var width = clone.outerWidth();
+	    clone.remove();
+	    return width;
 	}
 };
 
@@ -131,7 +138,7 @@ MaterialCharts.helpers.bar = {
 				this.insertVerticalTick( element, i, (i - 25) / absoluteHeightMultipler);
 			}
 		}
-		
+
 		var horizontalSpread = (width - 50) / (dataLabels.length + 1);
 
 		var j, barCount;
@@ -145,22 +152,20 @@ MaterialCharts.helpers.bar = {
 		$(element).append("<div class='material-charts-box-chart-vertical-tick-label' style='bottom: " + (heightPos - 4) + "px;'>" + label + "</div>");
 	},
 	insertHorizontalLabel: function( element, horizontalPos, label ) {
-		$(element).append("<div class='material-charts-box-chart-horizontal-label' style='left: " + horizontalPos + "px;'>" + label + "</div>");
+		var labelElement = $("<div class='material-charts-box-chart-horizontal-label' style='left: " + horizontalPos + "px;'>" + label + "</div>");
+		labelElement.appendTo($(element));
+		this.alignLabel( labelElement );
 	},
 	insertVerticalBar: function( element, horizontalPos, horizontalSpread, height, value, color ) {
 		$("<div data-hover='" + value + "' class='material-charts-box-chart-vertical-bar material-charts-" + color + "' style='left: " + 
 			(horizontalPos - horizontalSpread / 4) + "px; width: " + (horizontalSpread / 2) + 
 			"px; height: " + height + "px'></div>").appendTo($(element)).hide().slideDown();
 	},
-	alignLabels: function( element ) {
-		var width, oldPosition, newPosition;
-
-		$(element + " .material-charts-box-chart-horizontal-label").each(function() {
-			width = $(this).width();
-			oldPosition = parseInt($(this).css("left"));
-			newPosition = oldPosition - width / 2;
-			$(this).css("left", newPosition + "px");
-		});
+	alignLabel: function( labelElement ) {
+		var width = MaterialCharts.helpers.elementRealWidth( labelElement );
+		var oldPosition = parseInt($(labelElement).css("left"));
+		var newPosition = oldPosition - width / 2;
+		labelElement.css("left", newPosition + "px");
 	}
 };
 
